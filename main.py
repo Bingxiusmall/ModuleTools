@@ -34,7 +34,7 @@ def get_import_tags(import_string):
     import_result = []
     def _import_(*args, **kwargs):
         nonlocal import_result
-        import_result = [i for i in args] + [i for i in kwargs]
+        import_result = [args, kwargs]
     builtins.__import__ = _import_
     exec(import_string)
     builtins.__import__ = builtins_import
